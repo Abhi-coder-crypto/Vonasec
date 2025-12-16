@@ -33,8 +33,8 @@ const formSchema = z.object({
   phone: z
     .string()
     .regex(
-      /^\+91[0-9]{10}$/,
-      "Enter valid Indian mobile number (+91 followed by 10 digits)",
+      /^[0-9]{10}$/,
+      "Enter valid 10 digit mobile number",
     ),
 });
 
