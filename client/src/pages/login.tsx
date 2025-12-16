@@ -115,7 +115,7 @@ export default function LoginPage() {
       >
         <div className="flex flex-col items-center mb-4">
           <img 
-            src="/vonasec-logo.jpg" 
+            src="/vonasec-logo.png" 
             alt="MEGA-CV" 
             className="h-20 mb-2" 
           />
