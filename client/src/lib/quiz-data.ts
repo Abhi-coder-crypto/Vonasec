@@ -8,125 +8,170 @@ export interface Question {
   correctAnswer?: string;
 }
 
+// NOTE:
+// MCQ questions include `options`
+// Text-input questions use type: "text" and have NO options
+
 export const QUIZ_QUESTIONS: Question[] = [
   {
     id: 1,
-    text: "According to surgical infection-control guidelines, the most important measure to prevent surgical site infection (SSI) is:",
+    text: "How often do you encounter patients with persistent reflux symptoms despite management therapy?",
     type: "mcq",
     options: [
-      "Shorter surgery time",
-      "Strict asepsis and sterile products",
-      "Use of drains",
-      "Post-operative antibiotics only"
-    ],
-    correctAnswer: "Strict asepsis and sterile products"
+      "Rarely (less than 10%)",
+      "Occasionally (10–25%)",
+      "Frequently (25–50%)",
+      "Very often (>50%)"
+    ]
   },
   {
     id: 2,
-    text: "When should surgical antibiotic prophylaxis ideally be administered?",
+    text: "What, in your opinion, is the most common reason for suboptimal response to PPI or other management therapy?",
     type: "mcq",
     options: [
-      "After wound closure",
-      "6 hours before surgery",
-      "Within 60 minutes before incision",
-      "After surgery only"
-    ],
-    correctAnswer: "Within 60 minutes before incision"
+      "Poor compliance or incorrect timing",
+      "Nocturnal or non-acid reflux",
+      "Functional heartburn or hypersensitivity",
+      "True PPI resistance"
+    ]
   },
   {
     id: 3,
-    text: "Which factor increases the risk of surgical site infection the MOST?",
+    text: "Which subgroup of GERD patients do you find most challenging to manage?",
     type: "mcq",
     options: [
-      "Patient age",
-      "Duration of surgery",
-      "Sterile product quality",
-      "Surgeon experience"
-    ],
-    correctAnswer: "Duration of surgery"
+      "Nocturnal Acid Breakthrough",
+      "Obese or post-bariatric patients",
+      "Patients on chronic NSAIDs",
+      "Functional dyspepsia overlap cases"
+    ]
   },
   {
     id: 4,
-    text: "What are the most common infection challenges you face in surgical practice?",
-    type: "text"
+    text: "Which parameter do you rely on most for identifying difficult-to-treat GERD?",
+    type: "mcq",
+    options: [
+      "Persistent symptoms despite 8 weeks of PPI",
+      "Endoscopy findings",
+      "pH-impedance testing results",
+      "Clinical judgment based on symptom pattern"
+    ]
   },
   {
     id: 5,
-    text: "How do current infection-control guidelines influence your product selection?",
-    type: "text"
+    text: "What is your preferred approach after inadequate response to PPI therapy?",
+    type: "mcq",
+    options: [
+      "Dose escalation or split dosing",
+      "Switch to another PPI",
+      "Add-on prokinetic or H2 blocker",
+      "Shift to next-generation therapy (P-CABs)"
+    ]
   },
   {
     id: 6,
-    text: "According to SSI guidelines, first-line oral therapy for mild–moderate surgical site infection after clean-contaminated surgery is:",
+    text: "Have you prescribed Vonoprazan or any P-CAB in your practice?",
     type: "mcq",
     options: [
-      "Ciprofloxacin",
-      "Cefixime",
-      "Amoxicillin–Clavulanate",
-      "Linezolid"
+      "Yes, regularly",
+      "Yes, occasionally",
+      "Tried in few selected cases",
+      "Not yet, but aware of it"
     ]
   },
   {
     id: 7,
-    text: "In a post-operative skin and soft tissue infection with mixed aerobic–anaerobic flora, what would be your choice of oral antibiotic, and what factors guide your decision?",
-    type: "text"
+    text: "In your experience, what is the most noticeable clinical advantage of Vonoprazan over PPIs?",
+    type: "mcq",
+    options: [
+      "Faster symptom relief",
+      "Better nocturnal acid control",
+      "Sustained efficacy even in long-term users",
+      "All of the above"
+    ]
   },
   {
     id: 8,
-    text: "For post-incision wound infection with purulent discharge, What would be your choice of oral antibiotic and why?",
-    type: "text"
+    text: "In which patient profiles would you consider next-generation acid suppression as first choice?",
+    type: "mcq",
+    options: [
+      "PPI non-responders",
+      "Severe or erosive GERD",
+      "High-risk or frequent relapsers",
+      "All of the above"
+    ]
   },
   {
     id: 9,
-    text: "In diabetic foot infection (mild–moderate, non-MRSA), what would be your guideline-preferred oral therapy?",
-    type: "text"
+    text: "What additional clinical data would increase your confidence in using Vonoprazan widely?",
+    type: "mcq",
+    options: [
+      "Long-term safety data",
+      "Head-to-head trials with PPIs",
+      "Real-world patient outcome studies",
+      "All of the above"
+    ]
   },
   {
     id: 10,
-    text: "For post-drainage perianal abscess, which oral antibiotic is most appropriate?",
-    type: "text"
+    text: "How many cases of H. pylori infection do you encounter, on average, per month in your clinical practice?",
+    type: "mcq",
+    options: [
+      "Fewer than 5 cases",
+      "5–15 cases",
+      "16–30 cases",
+      "More than 30 cases"
+    ]
   },
   {
     id: 11,
-    text: "Which oral antibiotic you recommend for human or animal bite wounds encountered in surgical practice and why?",
-    type: "text"
+    text: "What is your current first-line therapy for H. pylori eradication?",
+    type: "mcq",
+    options: [
+      "PPI + Amoxicillin + Clarithromycin",
+      "PPI + Amoxicillin + Metronidazole",
+      "PPI + Bismuth + Tetracycline + Metronidazole",
+      "Sequential therapy (PPI + Amoxicillin followed by quadruple regimen)",
+      "PPI + Amoxicillin + Levofloxacin"
+    ]
   },
   {
     id: 12,
-    text: "In post-operative wound infection with foul-smelling discharge, the key microbial coverage required is:",
+    text: "In your clinical experience, how effective are conventional PPI-based triple therapy regimens in achieving H. pylori eradication?",
     type: "mcq",
     options: [
-      "Gram-positive cocci only",
-      "Anaerobes",
-      "Atypical organisms",
-      "Fungal pathogens"
+      ">90% eradication consistently",
+      "80–90% eradication",
+      "70–80% eradication",
+      "<70% eradication or frequent failures"
     ]
   },
   {
     id: 13,
-    text: "For mild surgical site infection managed on OPD basis, best oral empirical choice is:",
+    text: "What do you consider the primary benefits of Vonoprazan over traditional PPIs for H. pylori eradication?",
     type: "mcq",
     options: [
-      "Linezolid",
-      "Cefixime",
-      "Amoxicillin–Clavulanate",
-      "Doxycycline"
+      "Faster onset of acid suppression",
+      "Stronger and more sustained acid suppression",
+      "Reduced variability due to CYP2C19 polymorphisms",
+      "Meal-independent dosing"
     ]
   },
   {
     id: 14,
-    text: "When selecting an oral antibiotic for surgical infections, the most critical factor is:",
+    text: "Do you believe that Vonoprazan-based dual or triple therapy will be increasingly used in your clinical setting for H. pylori eradication in the near future?",
     type: "mcq",
     options: [
-      "Brand familiarity",
-      "Cost alone",
-      "Guideline-backed broad coverage",
-      "Shortest duration only"
+      "Yes, usage will increase significantly",
+      "Yes, there will be a moderate increase in usage",
+      "No, minimal increase expected",
+      "Unsure or too early to tell"
     ]
   },
   {
     id: 15,
-    text: "While prescribing Amoxyclav, what factors do you consider, and how do they influence your choice?",
+    text: "What challenges have you faced with PPI-based H. pylori treatment?",
     type: "text"
   }
 ];
+
