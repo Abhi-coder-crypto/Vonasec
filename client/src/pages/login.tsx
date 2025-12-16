@@ -98,9 +98,9 @@ export default function LoginPage() {
       >
         <div className="flex flex-col items-center mb-4">
           <img 
-            src="/mega-cv-logo.png" 
+            src="/mega-cv-logo.jpg" 
             alt="MEGA-CV" 
-            className="h-12 mb-2" 
+            className="h-14 mb-2" 
           />
           <p className="text-slate-500 text-sm font-medium tracking-wide uppercase text-center">
             Surgical Infection Decision Quiz
