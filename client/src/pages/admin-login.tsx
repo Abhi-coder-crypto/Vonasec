@@ -71,7 +71,7 @@ export default function AdminLoginPage() {
       >
         <div className="flex justify-center mb-6">
           <img 
-            src="/mega-cv-logo.jpg" 
+            src="/vonasec-logo.jpg" 
             alt="MEGA-CV" 
             className="h-16" 
           />
