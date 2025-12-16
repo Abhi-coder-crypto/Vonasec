@@ -79,7 +79,7 @@ export default function AdminDashboard() {
     }
 
     // Build CSV header
-    const headers = ["Name", "Email", "Phone", "Submitted At"];
+    const headers = ["Name", "Qualification", "Email", "Phone", "College", "State", "City", "Pincode", "Submitted At"];
     QUIZ_QUESTIONS.forEach((q, idx) => {
       headers.push(`Q${q.id}: ${q.text.substring(0, 50)}...`);
     });
@@ -95,8 +95,13 @@ export default function AdminDashboard() {
       };
       
       row.push(escapeCSV(sub.participant.name));
+      row.push(escapeCSV(sub.participant.qualification || ''));
       row.push(escapeCSV(sub.participant.email));
       row.push(escapeCSV(sub.participant.phone));
+      row.push(escapeCSV(sub.participant.collegeName || ''));
+      row.push(escapeCSV(sub.participant.state || ''));
+      row.push(escapeCSV(sub.participant.city || ''));
+      row.push(escapeCSV(sub.participant.pincode || ''));
       row.push(escapeCSV(new Date(sub.submittedAt).toLocaleString()));
       
       QUIZ_QUESTIONS.forEach(q => {
@@ -157,27 +162,32 @@ export default function AdminDashboard() {
             </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-x-auto">
             <Table>
                 <TableHeader>
                     <TableRow className="bg-slate-50 hover:bg-slate-50">
                         <TableHead>Date</TableHead>
                         <TableHead>Name</TableHead>
+                        <TableHead>Qualification</TableHead>
                         <TableHead>Email</TableHead>
                         <TableHead>Mobile</TableHead>
+                        <TableHead>College</TableHead>
+                        <TableHead>State</TableHead>
+                        <TableHead>City</TableHead>
+                        <TableHead>Pincode</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {isLoading ? (
                         <TableRow>
-                            <TableCell colSpan={5} className="text-center py-10 text-slate-500">
+                            <TableCell colSpan={10} className="text-center py-10 text-slate-500">
                                 Loading...
                             </TableCell>
                         </TableRow>
                     ) : filteredSubmissions.length === 0 ? (
                         <TableRow>
-                            <TableCell colSpan={5} className="text-center py-10 text-slate-500">
+                            <TableCell colSpan={10} className="text-center py-10 text-slate-500">
                                 No submissions found.
                             </TableCell>
                         </TableRow>
@@ -188,8 +198,13 @@ export default function AdminDashboard() {
                                     {new Date(sub.submittedAt).toLocaleDateString()} <span className="text-slate-400 text-xs ml-1">{new Date(sub.submittedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
                                 </TableCell>
                                 <TableCell className="font-semibold text-slate-900">{sub.participant.name}</TableCell>
+                                <TableCell>{sub.participant.qualification}</TableCell>
                                 <TableCell>{sub.participant.email}</TableCell>
                                 <TableCell>{sub.participant.phone}</TableCell>
+                                <TableCell>{sub.participant.collegeName || '-'}</TableCell>
+                                <TableCell>{sub.participant.state}</TableCell>
+                                <TableCell>{sub.participant.city}</TableCell>
+                                <TableCell>{sub.participant.pincode}</TableCell>
                                 <TableCell className="text-right">
                                     <Button data-testid={`button-view-${sub._id}`} size="sm" variant="outline" onClick={() => setSelectedSubmission(sub)}>
                                         <Eye className="w-4 h-4 mr-2" />

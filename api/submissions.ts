@@ -72,8 +72,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               participant: {
                 _id: participantDoc._id.toString(),
                 name: participantDoc.name,
+                qualification: participantDoc.qualification || '',
                 email: participantDoc.email,
                 phone: participantDoc.phone,
+                collegeName: participantDoc.collegeName || '',
+                state: participantDoc.state || '',
+                city: participantDoc.city || '',
+                pincode: participantDoc.pincode || '',
                 createdAt: participantDoc.createdAt,
               },
             });
