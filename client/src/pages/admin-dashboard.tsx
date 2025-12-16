@@ -119,7 +119,7 @@ export default function AdminDashboard() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `megacv_quiz_submissions_${new Date().toISOString().split('T')[0]}.csv`;
+    a.download = `vonasec_quiz_submissions_${new Date().toISOString().split('T')[0]}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     
