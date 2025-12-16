@@ -108,7 +108,7 @@ export default function QuizPage() {
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img
-              src="/mega-cv-logo.jpg"
+              src="/vonasec-logo.png"
               alt="MEGA-CV"
               className="h-10"
             />
