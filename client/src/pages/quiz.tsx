@@ -230,8 +230,7 @@ export default function QuizPage() {
             </div>
             <DialogTitle className="text-2xl">Quiz Completed!</DialogTitle>
             <DialogDescription className="text-base pt-2">
-              Thank you for participating in the MEGA CV Surgical Infection
-              Decision Quiz. Your responses have been recorded.
+              Thank you for participating in the Vonasec ASICON Quiz. Your responses have been recorded.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="sm:justify-center">
