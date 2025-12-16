@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Activity, CheckCircle2, ChevronRight } from "lucide-react";
+import { CheckCircle2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -92,10 +92,7 @@ export default function QuizPage() {
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-primary/10 p-2 rounded-lg">
-              <Activity className="w-5 h-5 text-primary" />
-            </div>
-            <span className="font-bold text-slate-800">MEGA CV</span>
+            <img src="/vonasec-logo.png" alt="Vonasec" className="h-10" />
           </div>
           <div className="flex items-center gap-4 text-sm text-slate-500">
             <span>Question {currentQuestionIndex + 1} of {QUIZ_QUESTIONS.length}</span>

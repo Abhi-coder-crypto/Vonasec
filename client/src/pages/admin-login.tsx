@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { ShieldCheck, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -61,9 +61,7 @@ export default function AdminLoginPage() {
         className="w-full max-w-sm z-10 px-4"
       >
         <div className="flex justify-center mb-8">
-            <div className="bg-slate-800 p-4 rounded-full border border-slate-700">
-                <ShieldCheck className="w-8 h-8 text-primary" />
-            </div>
+          <img src="/vonasec-logo.png" alt="Vonasec" className="h-20" />
         </div>
 
         <Card className="border-slate-800 bg-slate-950 text-slate-50 shadow-2xl">

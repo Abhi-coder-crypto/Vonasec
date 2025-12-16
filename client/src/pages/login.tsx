@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Activity } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -77,10 +76,7 @@ export default function LoginPage() {
         className="w-full max-w-md z-10 px-4"
       >
         <div className="flex flex-col items-center mb-8">
-          <div className="bg-primary/10 p-4 rounded-2xl mb-4">
-             <Activity className="w-12 h-12 text-primary" />
-          </div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight text-center">MEGA CV</h1>
+          <img src="/vonasec-logo.png" alt="Vonasec" className="h-24 mb-4" />
           <p className="text-slate-500 text-sm font-medium tracking-wide uppercase mt-1 text-center">Surgical Infection Decision Quiz</p>
         </div>
 
