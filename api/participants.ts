@@ -30,10 +30,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const participantsCol = db.collection('participants');
       const submissionsCol = db.collection('submissions');
       
-      // Check if user has already submitted the quiz (by email)
-      const existingParticipantByEmail = await participantsCol.findOne({ email: email.toLowerCase() });
+      // Check if user has already submitted the quiz (by email) - case insensitive search
+      const existingParticipantByEmail = await participantsCol.findOne({ 
+        email: { $regex: new RegExp(`^${email.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') }
+      });
       if (existingParticipantByEmail) {
-        const existingSubmission = await submissionsCol.findOne({ participantId: existingParticipantByEmail._id.toString() });
+        // Check for submission using both string and ObjectId formats
+        const existingSubmission = await submissionsCol.findOne({ 
+          $or: [
+            { participantId: existingParticipantByEmail._id.toString() },
+            { participantId: existingParticipantByEmail._id }
+          ]
+        });
         if (existingSubmission) {
           return res.status(400).json({ error: 'This email has already been used to complete the quiz. Each participant can only submit once.' });
         }
@@ -42,7 +50,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       // Check if user has already submitted the quiz (by phone)
       const existingParticipantByPhone = await participantsCol.findOne({ phone: phone });
       if (existingParticipantByPhone) {
-        const existingSubmission = await submissionsCol.findOne({ participantId: existingParticipantByPhone._id.toString() });
+        // Check for submission using both string and ObjectId formats
+        const existingSubmission = await submissionsCol.findOne({ 
+          $or: [
+            { participantId: existingParticipantByPhone._id.toString() },
+            { participantId: existingParticipantByPhone._id }
+          ]
+        });
         if (existingSubmission) {
           return res.status(400).json({ error: 'This phone number has already been used to complete the quiz. Each participant can only submit once.' });
         }
