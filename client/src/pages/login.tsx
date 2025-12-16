@@ -26,16 +26,18 @@ import { api } from "@/lib/api";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+  qualification: z.string().min(2, "Qualification is required"),
   email: z
     .string()
     .email("Invalid email address")
     .regex(/@gmail\.com$/i, "Only Gmail addresses are allowed"),
   phone: z
     .string()
-    .regex(
-      /^[0-9]{10}$/,
-      "Enter valid 10 digit mobile number",
-    ),
+    .regex(/^[0-9]{10}$/, "Enter valid 10 digit mobile number"),
+  collegeName: z.string().optional(),
+  state: z.string().min(2, "State is required"),
+  city: z.string().min(2, "City is required"),
+  pincode: z.string().regex(/^[0-9]{6}$/, "Enter valid 6 digit pincode"),
 });
 
 export default function LoginPage() {
@@ -47,8 +49,13 @@ export default function LoginPage() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      qualification: "",
       email: "",
       phone: "",
+      collegeName: "",
+      state: "",
+      city: "",
+      pincode: "",
     },
   });
 
@@ -77,7 +84,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 relative overflow-hidden py-8">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute top-[20%] -left-[10%] w-[400px] h-[400px] rounded-full bg-blue-400/5 blur-3xl" />
@@ -134,6 +141,24 @@ export default function LoginPage() {
 
                 <FormField
                   control={form.control}
+                  name="qualification"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Qualification</FormLabel>
+                      <FormControl>
+                        <Input
+                          data-testid="input-qualification"
+                          placeholder="MBBS, MS, etc."
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
@@ -162,6 +187,79 @@ export default function LoginPage() {
                           data-testid="input-phone"
                           placeholder="9876543210"
                           maxLength={10}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="collegeName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>College Name (Optional)</FormLabel>
+                      <FormControl>
+                        <Input
+                          data-testid="input-college"
+                          placeholder="Medical College Name"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="state"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>State</FormLabel>
+                      <FormControl>
+                        <Input
+                          data-testid="input-state"
+                          placeholder="Maharashtra"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="city"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>City</FormLabel>
+                      <FormControl>
+                        <Input
+                          data-testid="input-city"
+                          placeholder="Mumbai"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="pincode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Pincode</FormLabel>
+                      <FormControl>
+                        <Input
+                          data-testid="input-pincode"
+                          placeholder="400001"
+                          maxLength={6}
                           {...field}
                         />
                       </FormControl>

@@ -71,8 +71,13 @@ class MongoStorage implements IStorage {
       return {
         _id: doc._id.toString(),
         name: doc.name,
+        qualification: doc.qualification,
         email: doc.email,
         phone: doc.phone,
+        collegeName: doc.collegeName,
+        state: doc.state,
+        city: doc.city,
+        pincode: doc.pincode,
         createdAt: doc.createdAt,
       };
     } catch {
@@ -91,8 +96,13 @@ class MongoStorage implements IStorage {
       return {
         _id: doc._id.toString(),
         name: doc.name,
+        qualification: doc.qualification,
         email: doc.email,
         phone: doc.phone,
+        collegeName: doc.collegeName,
+        state: doc.state,
+        city: doc.city,
+        pincode: doc.pincode,
         createdAt: doc.createdAt,
       };
     } catch {
@@ -174,8 +184,13 @@ class MongoStorage implements IStorage {
           participant = {
             _id: participantDoc._id.toString(),
             name: participantDoc.name,
+            qualification: participantDoc.qualification,
             email: participantDoc.email,
             phone: participantDoc.phone,
+            collegeName: participantDoc.collegeName,
+            state: participantDoc.state,
+            city: participantDoc.city,
+            pincode: participantDoc.pincode,
             createdAt: participantDoc.createdAt,
           };
         }
