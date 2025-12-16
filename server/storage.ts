@@ -35,7 +35,7 @@ class MongoStorage implements IStorage {
     }
     if (!this.db) {
       await this.client.connect();
-      this.db = this.client.db("megacv_quiz");
+      this.db = this.client.db("vonasec_quiz");
     }
     return this.db;
   }
