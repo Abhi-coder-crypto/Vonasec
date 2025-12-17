@@ -119,7 +119,9 @@ export default function LoginPage() {
             alt="MEGA-CV" 
             className="h-20 mb-2" 
           />
-          
+          <p className="text-slate-500 text-sm font-medium tracking-wide uppercase text-center">
+            Surgical Infection Decision Quiz
+          </p>
         </div>
 
         <Card className="border-slate-200 shadow-xl shadow-slate-200/50 backdrop-blur-sm bg-white/80">
