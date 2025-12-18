@@ -120,7 +120,7 @@ export default function LoginPage() {
             className="h-20 mb-2" 
           />
           <p className="text-slate-500 text-sm font-medium tracking-wide uppercase text-center">
-            Surgical Infection Decision Quiz
+            VONOPRAZAN - ACID SUPPRESSION REDEFINED
           </p>
         </div>
 
