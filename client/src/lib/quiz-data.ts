@@ -26,7 +26,7 @@ export const QUIZ_QUESTIONS: Question[] = [
   },
   {
     id: 2,
-    text: "What, in your opinion, is the most common reason for suboptimal response to PPI / other management therapy?",
+    text: "What, in your opinion, is the most common reason for suboptimal response to PPI/ other management therapy?",
     type: "mcq",
     options: [
       "Poor compliance or incorrect timing",
@@ -115,7 +115,7 @@ export const QUIZ_QUESTIONS: Question[] = [
   },
   {
     id: 10,
-    text: "What challenges have you faced with PPI-based H. pylori treatment?",
+    text: "What are the challenges have you faced with PPI-based H. pylori treatment?",
     type: "text"
   }
 ];
