@@ -170,34 +170,43 @@ class MongoStorage implements IStorage {
       .sort({ submittedAt: -1 })
       .toArray();
     
-    const results: SubmissionWithParticipant[] = [];
-    
-    for (const sub of submissions) {
-      let participant: Participant | null = null;
-      
-      try {
-        const participantDoc = await participantsCol.findOne({ 
-          _id: new ObjectId(sub.participantId) 
-        });
-        
-        if (participantDoc) {
-          participant = {
-            _id: participantDoc._id.toString(),
-            name: participantDoc.name,
-            qualification: participantDoc.qualification,
-            email: participantDoc.email,
-            phone: participantDoc.phone,
-            collegeName: participantDoc.collegeName,
-            state: participantDoc.state,
-            city: participantDoc.city,
-            pincode: participantDoc.pincode,
-            createdAt: participantDoc.createdAt,
-          };
+    // Batch load all participants at once instead of N+1 queries
+    const participantIds = submissions
+      .map(sub => {
+        try {
+          return new ObjectId(sub.participantId);
+        } catch {
+          return null;
         }
-      } catch {
-        // Participant not found
-      }
-      
+      })
+      .filter((id): id is ObjectId => id !== null);
+    
+    // Fetch all participants in a single query
+    const participantDocs = await participantsCol
+      .find({ _id: { $in: participantIds } })
+      .toArray();
+    
+    // Create a map for fast lookup
+    const participantMap = new Map();
+    for (const doc of participantDocs) {
+      participantMap.set(doc._id.toString(), {
+        _id: doc._id.toString(),
+        name: doc.name,
+        qualification: doc.qualification,
+        email: doc.email,
+        phone: doc.phone,
+        collegeName: doc.collegeName,
+        state: doc.state,
+        city: doc.city,
+        pincode: doc.pincode,
+        createdAt: doc.createdAt,
+      });
+    }
+    
+    // Build results using the map
+    const results: SubmissionWithParticipant[] = [];
+    for (const sub of submissions) {
+      const participant = participantMap.get(sub.participantId);
       if (participant) {
         results.push({
           _id: sub._id.toString(),
